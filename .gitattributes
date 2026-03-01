@@ -1,0 +1,20 @@
+# 确保 Markdown 文件使用 LF 换行符
+*.md text eol=lf
+
+# 确保脚本文件使用 LF 换行符
+*.sh text eol=lf
+*.py text eol=lf
+*.js text eol=lf
+*.ts text eol=lf
+
+# 确保 YAML 和 JSON 使用 LF 换行符
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+
+# 图片文件使用二进制
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg binary
