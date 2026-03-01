@@ -26,14 +26,19 @@
    - ARIA 标签与键盘导航
    - 语义化 HTML
    - Meta 标签与结构化数据
+6. **单元测试**（新增）：
+   - 组件单元测试（使用 Jest/Vitest + React Testing Library）
+   - 工具函数/自定义 Hooks 测试覆盖率 > 80%
+   - Mock API 响应进行隔离测试
 
 ### 3. 交付规范 (重要)
 
-- **代码存放路径**：源代码存放在项目根目录对应的 `src/` 结构下。
-- **文档存放路径**：组件文档存放在 `.claude/doc/02_Architecture/frontend/` 目录下。
+- **代码存放路径**：源代码存放在项目根目录对应的 `src/` 结构下（如 `src/components/`, `src/pages/`, `src/hooks/`）。
+- **文档存放路径**：前端组件文档（如有）存放在 `.claude/doc/02_Architecture/` 目录下。
 - **命名规范**：
-  - 组件文档：`components_[模块名].md`
-  - 页面文档：`pages_[页面名].md`
+  - 组件：`[ComponentName].tsx` 或 `[ComponentName].vue`
+  - 页面：`[PageName].page.tsx` 或 `[PageName].vue`
+  - 样式：`[ComponentName].module.css` 或 `[ComponentName].styled.ts`
 - **输出格式**：代码需使用 TypeScript，附带 PropTypes 或 Zod 验证，遵循 ESLint/Prettier 规范。
 
 ### 4. 协作协议
