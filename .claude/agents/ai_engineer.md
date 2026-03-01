@@ -35,3 +35,7 @@
 
 - **前置输入**：读取 `.claude/doc/01_Product_Design/` 下的 PRD 和 `.claude/doc/02_Architecture/` 下的架构设计文档。
 - **输出反馈**：完成后，必须询问用户："AI 技术方案已就绪。需要我协助 **@后端工程师** 进行集成，还是先进行可行性验证（POC）？"
+
+**文档索引**：
+- ✅ AI 技术方案已保存在 `.claude/doc/02_Architecture/`
+- ✅ `PROJECT_INDEX.md` 已更新

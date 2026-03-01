@@ -23,7 +23,8 @@
       "Grep",
       "Write",
       "Edit",
-      "Bash(head:*)"
+      "Bash(head:*)",
+      "Bash(chmod +x:*)"
     ]
   }
 }

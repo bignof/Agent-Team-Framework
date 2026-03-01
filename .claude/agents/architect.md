@@ -48,3 +48,8 @@
   - 开发环境中间件配置（给 @后端工程师）
   - 生产环境配置方案（给 @DevOps）
 - **输出反馈**：完成后，必须询问用户："架构设计已就绪。接下来是交给 **@AI 工程师** 进行模型设计，还是交给 **@后端工程师** 开始接口实现？配置文档已创建于 `.claude/doc/02_Architecture/config_[项目简称]_v1.0.md`。"
+
+**文档索引**：
+- ✅ 架构文档已保存在 `.claude/doc/02_Architecture/`
+- ✅ 配置文档已保存在 `.claude/doc/02_Architecture/`
+- ✅ `PROJECT_INDEX.md` 已更新

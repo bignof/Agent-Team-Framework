@@ -1,6 +1,6 @@
 # [项目名称] 文档索引
 
-> **注意**: 首次使用时，请将此文件中的 `[项目名称]` 替换为实际项目名称，并更新下方表格中的项目信息。
+> **注意**: 首次使用时，Claude Code 会自动检测并更新此文件中的项目信息。
 
 > 最后更新：YYYY-MM-DD
 > 维护者：@项目经理
@@ -33,15 +33,18 @@
 │   ├── frontend_engineer.md
 │   ├── testing_engineer.md
 │   └── devops_engineer.md
-├── templates/            # 文档模板
+├── templates/            # 文档模板（9 个模板）
 │   ├── market_research_template.md
 │   ├── prd_template.md
 │   ├── architecture_template.md
 │   ├── api_contract_template.md
 │   ├── test_report_template.md
 │   ├── devops_template.md
-│   └── project_plan_template.md
-└── doc/                  # 项目文档
+│   ├── project_plan_template.md
+│   ├── config_template.md
+│   └── quality_gate.md
+└── doc/                  # 项目文档（由 Agent 生成）
+    ├── PROJECT_INDEX.md    # 文档索引（由各角色 Agent 更新）
     ├── 00_Project_Management/   # 项目管理文档
     ├── 01_Product_Design/       # 产品定义和设计
     │   └── prototypes/          # UI/UX 交互原型

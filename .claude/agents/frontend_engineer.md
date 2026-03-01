@@ -40,3 +40,7 @@
 
 - **前置输入**：必须先读取 `.claude/doc/01_Product_Design/` 目录下的 UI/UX 设计稿和 `.claude/doc/03_API_Contract/` 下的 API 规范。
 - **输出反馈**：完成后，必须告知用户："前端页面已实现，可通过 `npm run dev` 启动预览。接下来是交给 **@测试工程师** 进行 E2E 测试，还是先进行内部 Review？"
+
+**文档索引**：
+- ✅ 前端代码已保存在 `src/` 目录
+- ✅ `PROJECT_INDEX.md` 已更新（如有文档）

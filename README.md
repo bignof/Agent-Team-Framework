@@ -4,53 +4,36 @@
 
 一套完整的 Agent 角色系统，包含 10 个预定义角色，覆盖从产品规划到部署上线的完整开发流程。
 
+**特点**：
+- 🎭 **10 个专业角色** - 项目经理、产品经理、架构师、工程师等
+- 📋 **质量卡点机制** - 5 道关卡确保阶段交付质量
+- 🤖 **自动初始化** - 首次对话自动检测并配置项目
+
 ---
 
 ## ⚠️ 首次使用必读
 
-**在开始项目之前，请先完成以下初始化步骤：**
+**在开始项目之前，请确保项目已初始化：**
 
-### 1. 确认项目名称
+### 自动初始化
 
-打开 `.claude/doc/PROJECT_INDEX.md`，将所有 `[项目名称]` 占位符替换为你的实际项目名称：
+第一次使用时，Claude Code 会自动检测项目是否已初始化。如果未初始化，会提示你输入项目名称和描述，然后自动完成配置。
 
-```markdown
-# 你的项目名称 文档索引
+### 开始项目
 
-> 最后更新：YYYY-MM-DD
-> 维护者：@项目经理
-```
-
-同时更新 `CLAUDE.md` 中的示例文件名，将 `prd_myproject_v1.0.md` 等示例改为你自己的项目命名风格。
-
-### 2. 检查角色配置
-
-根据你的项目需求，确认是否需要所有 10 个角色：
-
-| 角色 | 是否需要 | 说明 |
-|------|---------|------|
-| @项目经理 | ✅ 建议保留 | 负责进度跟踪和文档索引维护 |
-| @市场调研 | ⚠️ 可选 | 内部工具/已验证需求可跳过 |
-| @产品经理 | ✅ 建议保留 | 需求分析和 PRD 编写 |
-| @UI/UX 设计师 | ✅ 建议保留 | 交互原型设计 |
-| @架构师 | ✅ 建议保留 | 技术架构设计 |
-| @AI 工程师 | ⚠️ 可选 | 有 AI 功能时启用 |
-| @后端工程师 | ✅ 建议保留 | API 实现 |
-| @前端工程师 | ✅ 建议保留 | 前端实现 |
-| @测试工程师 | ✅ 建议保留 | 测试策略和报告 |
-| @DevOps | ⚠️ 可选 | 简单项目可人工部署 |
-
-### 3. 开始项目
-
-召唤 @项目经理 开始项目规划：
+初始化完成后，召唤 @项目经理 开始项目规划：
 
 ```
 @项目经理 请为这个项目创建项目计划和任务拆解
 ```
 
+> 💡 **说明**：所有 10 个角色默认可用，根据项目实际需求选择召唤对应角色即可。
+
 ---
 
 ## 🎭 可用角色
+
+框架包含 10 个预定义角色，覆盖完整开发流程：
 
 | 角色 | 职责 | 产出物 |
 |------|------|--------|
@@ -64,6 +47,8 @@
 | @前端工程师 | 前端实现、组件开发、API 集成 | 前端代码 |
 | @测试工程师 | 测试策略、用例编写、测试报告 | 测试报告 |
 | @DevOps | CI/CD、容器化、监控配置 | 部署配置、运维文档 |
+
+> 💡 **使用说明**：所有角色默认可用，根据项目实际需求召唤对应角色即可。例如：内部工具项目可跳过 @市场调研，AI 项目重点使用 @AI 工程师。
 
 ---
 
@@ -100,22 +85,24 @@ graph LR
 │   ├── frontend_engineer.md
 │   ├── testing_engineer.md
 │   └── devops_engineer.md
-├── templates/              # 文档模板（7 个模板）
+├── templates/              # 文档模板（8 个模板）
 │   ├── market_research_template.md
 │   ├── prd_template.md
 │   ├── architecture_template.md
 │   ├── api_contract_template.md
 │   ├── test_report_template.md
 │   ├── devops_template.md
-│   └── project_plan_template.md
-└── doc/                    # 项目文档（由 Agent 生成）
-    ├── PROJECT_INDEX.md    # 文档索引
-    ├── 00_Project_Management/
-    ├── 01_Product_Design/
-    ├── 02_Architecture/
-    ├── 03_API_Contract/
-    ├── 04_Test_Reports/
-    └── 05_DevOps/
+│   ├── project_plan_template.md
+│   ├── config_template.md
+│   └── quality_gate.md     # 质量卡点检查清单
+├── doc/                    # 项目文档（由 Agent 生成）
+│   ├── PROJECT_INDEX.md    # 文档索引（由各角色 Agent 更新）
+│   ├── 00_Project_Management/
+│   ├── 01_Product_Design/
+│   ├── 02_Architecture/
+│   ├── 03_API_Contract/
+│   ├── 04_Test_Reports/
+│   └── 05_DevOps/
 ```
 
 ---
@@ -127,12 +114,14 @@ graph LR
 | 模板 | 用途 |
 |------|------|
 | `market_research_template.md` | 市场调研报告 |
-| `prd_template.md` | 产品需求文档 |
-| `architecture_template.md` | 技术架构设计 |
+| `prd_template.md` | 产品需求文档（带填写示例） |
+| `architecture_template.md` | 技术架构设计（带 trade-off 指引） |
 | `api_contract_template.md` | API 接口规范 |
 | `test_report_template.md` | 测试报告 |
 | `devops_template.md` | 部署配置文档 |
 | `project_plan_template.md` | 项目计划 |
+| `config_template.md` | 环境配置规范 |
+| `quality_gate.md` | 质量卡点检查清单 |
 
 ---
 
@@ -175,19 +164,27 @@ graph LR
 ## 📌 最佳实践
 
 ### 1. 文档索引维护
-每次生成新文档后，@项目经理 应更新 `PROJECT_INDEX.md`
+**每个角色负责更新**：完成任务后，各角色必须在对应目录生成文档，并更新 `PROJECT_INDEX.md`。
 
-### 2. 文件命名规范
+### 2. 质量卡点检查
+每个阶段完成后，对照 `.claude/templates/quality_gate.md` 进行检查：
+- **QG-01**: 项目规划 → 产品需求
+- **QG-02**: 产品需求 → 架构设计
+- **QG-03**: 架构设计 → 代码实现
+- **QG-04**: 代码实现 → 测试
+- **QG-05**: 测试 → 部署
+
+### 3. 文件命名规范
 ```
 [角色]_[项目]_[功能]_v[版本].md
 示例：prd_myapp_login_v1.0.md
 ```
 
-### 3. 角色交接
+### 4. 角色交接
 每个角色完成任务后，会提示下一步应该召唤哪个角色
 
-### 4. 模板使用
-优先使用模板，保持文档格式一致性
+### 5. 模板使用
+优先使用模板，保持文档格式一致性。模板中包含填写说明和示例。
 
 ---
 
@@ -204,6 +201,16 @@ A:
 1. 在 `.claude/agents/` 创建新的 `.md` 文件
 2. 在 `CLAUDE.md` 中添加角色映射
 3. 更新 `PROJECT_INDEX.md`
+
+### Q: 项目未初始化怎么办？
+A:
+第一次对话时，Claude Code 会自动检测并提示你输入项目名称和描述，然后自动完成初始化。
+
+### Q: 质量卡点怎么使用？
+A:
+1. 打开 `.claude/templates/quality_gate.md`
+2. 找到对应阶段的检查清单
+3. 逐项检查通过后，再开始下一阶段工作
 
 ---
 
