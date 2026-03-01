@@ -3,12 +3,9 @@
     "allow": [
       "WebSearch",
       "Bash(dir:*)",
-      "Bash(git add:*)",
-      "Bash(git commit:*)",
       "Bash(git status:*)",
       "Bash(git diff:*)",
       "Bash(git log:*)",
-      "Bash(git push:*)",
       "Bash(npm:*)",
       "Bash(npx:*)",
       "Bash(yarn:*)",
