@@ -12,13 +12,13 @@
 ### 1.1 开发环境配置
 | 中间件 | 版本 | 本地端口 | Docker 镜像 | 账号/密码 | 说明 |
 |-------|------|---------|------------|----------|------|
-| MySQL | 8.0 | 3306 | mysql:8.0 | root/root123 | 主数据库 |
-| PostgreSQL | 15 | 5432 | postgres:15 | postgres/pg123 | 可选 |
-| Redis | 7.0 | 6379 | redis:7-alpine | - | 缓存/会话 |
-| MongoDB | 6.0 | 27017 | mongo:6 | mongo/mongo123 | 文档存储 |
-| RabbitMQ | 3.12 | 5672/15672 | rabbitmq:3.12-management | guest/guest | 消息队列 |
-| Kafka | 3.5 | 9092/9093 | confluentinc/cp-kafka:7.4.0 | - | 事件流 |
-| Elasticsearch | 8.9 | 9200/9300 | elasticsearch:8.9 | elastic/elastic123 | 搜索/日志 |
+| MySQL | 8.0+ | 3306 | mysql:8.0 | root/root123 | 主数据库 |
+| PostgreSQL | 15+ | 5432 | postgres:15 | postgres/pg123 | 可选 |
+| Redis | 7.0+ | 6379 | redis:7-alpine | - | 缓存/会话 |
+| MongoDB | 6.0+ | 27017 | mongo:6 | mongo/mongo123 | 文档存储 |
+| RabbitMQ | 3.12+ | 5672/15672 | rabbitmq:3.12-management | guest/guest | 消息队列 |
+| Kafka | 3.5+ | 9092/9093 | confluentinc/cp-kafka:7.4.0 | - | 事件流 |
+| Elasticsearch | 8.9+ | 9200/9300 | elasticsearch:8.9 | elastic/elastic123 | 搜索/日志 |
 
 ### 1.2 必装中间件（根据项目选择）
 - [ ] MySQL 8.0+

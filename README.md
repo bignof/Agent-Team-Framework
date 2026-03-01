@@ -7,7 +7,9 @@
 **特点**：
 - 🎭 **10 个专业角色** - 项目经理、产品经理、架构师、工程师等
 - 📋 **质量卡点机制** - 6 道关卡确保阶段交付质量（QG-01/QG-02/QG-02.5/QG-03/QG-04/QG-05）
+- 📝 **10 个文档模板** - 覆盖产品、技术、测试、运维全流程
 - 🤖 **自动初始化** - 首次对话自动检测并配置项目
+- 🔄 **变更管理流程** - 需求变更可追溯、影响可控
 
 ---
 
@@ -41,12 +43,12 @@
 | @市场调研 | 竞品分析、用户画像、市场趋势 | 市场调研报告 |
 | @产品经理 | PRD 编写 + **线框图**、需求分析、验收标准 | PRD 文档、页面线框图 |
 | @UI/UX 设计师 | **基于线框图**进行高保真交互原型、用户体验设计 | HTML 交互原型 |
-| @架构师 | 技术选型、架构设计、API 规范 | 架构设计文档、API 合同 |
+| @架构师 | 技术选型、架构设计、API 规范 | 架构设计文档、API 合同、配置规范 |
 | @AI 工程师 | AI 技术方案、Prompt 设计、RAG 架构 | AI 技术方案 |
 | @后端工程师 | API 实现、数据库设计、业务逻辑 | API 代码、数据库迁移 |
 | @前端工程师 | 前端实现、组件开发、API 集成 | 前端代码 |
 | @测试工程师 | 测试策略、用例编写、测试报告 | 测试报告 |
-| @DevOps | CI/CD、容器化、监控配置 | 部署配置、运维文档 |
+| @DevOps | CI/CD、容器化、监控配置、运维巡检 | 部署配置、运维文档、运维周报 |
 
 > 💡 **使用说明**：所有角色默认可用，根据项目实际需求召唤对应角色即可。例如：内部工具项目可跳过 @市场调研，AI 项目重点使用 @AI 工程师。
 
@@ -80,36 +82,41 @@ graph LR
 ## 📁 目录结构
 
 ```
-.claude/
-├── agents/                 # Agent 角色定义（10 个角色）
-│   ├── project_manager.md
-│   ├── market_researcher.md
-│   ├── product_manager.md
-│   ├── ui_ux_designer.md
-│   ├── architect.md
-│   ├── ai_engineer.md
-│   ├── backend_engineer.md
-│   ├── frontend_engineer.md
-│   ├── testing_engineer.md
-│   └── devops_engineer.md
-├── templates/              # 文档模板（9 个模板）
-│   ├── market_research_template.md
-│   ├── prd_template.md
-│   ├── architecture_template.md
-│   ├── api_contract_template.md
-│   ├── test_report_template.md
-│   ├── devops_template.md
-│   ├── project_plan_template.md
-│   ├── config_template.md
-│   └── quality_gate.md     # 质量卡点检查清单
-├── doc/                    # 项目文档（由 Agent 生成）
-│   ├── PROJECT_INDEX.md    # 文档索引（由各角色 Agent 更新）
-│   ├── 00_Project_Management/
-│   ├── 01_Product_Design/
-│   ├── 02_Architecture/
-│   ├── 03_API_Contract/
-│   ├── 04_Test_Reports/
-│   └── 05_DevOps/
+.ai/
+├── .claude/
+│   ├── agents/                 # Agent 角色定义（10 个角色）
+│   │   ├── project_manager.md
+│   │   ├── market_researcher.md
+│   │   ├── product_manager.md
+│   │   ├── ui_ux_designer.md
+│   │   ├── architect.md
+│   │   ├── ai_engineer.md
+│   │   ├── backend_engineer.md
+│   │   ├── frontend_engineer.md
+│   │   ├── testing_engineer.md
+│   │   └── devops_engineer.md
+│   ├── templates/              # 文档模板（10 个模板）
+│   │   ├── market_research_template.md
+│   │   ├── prd_template.md
+│   │   ├── architecture_template.md
+│   │   ├── api_contract_template.md
+│   │   ├── test_report_template.md
+│   │   ├── devops_template.md
+│   │   ├── project_plan_template.md
+│   │   ├── config_template.md
+│   │   ├── quality_gate.md            # 质量卡点检查清单
+│   │   └── ops_weekly_report_template.md  # 运维巡检周报模板（新增）
+│   └── doc/                    # 项目文档（由 Agent 生成）
+│       ├── PROJECT_INDEX.md    # 文档索引（由各角色 Agent 更新）
+│       ├── 00_Project_Management/
+│       ├── 01_Product_Design/
+│       │   └── prototypes/     # UI/UX 交互原型
+│       ├── 02_Architecture/
+│       ├── 03_API_Contract/
+│       ├── 04_Test_Reports/
+│       └── 05_DevOps/
+├── CLAUDE.md                   # 框架核心配置
+└── README.md                   # 本文件
 ```
 
 ---
@@ -118,17 +125,18 @@ graph LR
 
 所有模板都在 `.claude/templates/` 目录下，包含：
 
-| 模板 | 用途 |
-|------|------|
-| `market_research_template.md` | 市场调研报告 |
-| `prd_template.md` | 产品需求文档（带填写示例） |
-| `architecture_template.md` | 技术架构设计（带 trade-off 指引） |
-| `api_contract_template.md` | API 接口规范 |
-| `test_report_template.md` | 测试报告 |
-| `devops_template.md` | 部署配置文档 |
-| `project_plan_template.md` | 项目计划 |
-| `config_template.md` | 环境配置规范 |
-| `quality_gate.md` | 质量卡点检查清单 |
+| 模板 | 用途 | 负责角色 |
+|------|------|----------|
+| `market_research_template.md` | 市场调研报告 | @市场调研 |
+| `prd_template.md` | 产品需求文档（带线框图指引） | @产品经理 |
+| `architecture_template.md` | 技术架构设计（带 trade-off 指引） | @架构师 |
+| `api_contract_template.md` | API 接口规范（OpenAPI/Swagger） | @架构师/@后端 |
+| `test_report_template.md` | 测试报告（功能/集成/E2E/性能） | @测试工程师 |
+| `devops_template.md` | 部署配置文档 | @DevOps |
+| `project_plan_template.md` | 项目计划（无固定周期版本） | @项目经理 |
+| `config_template.md` | 环境配置规范（中间件/Docker/环境变量） | @架构师 |
+| `quality_gate.md` | 质量卡点检查清单（6 道关卡） | @项目经理 |
+| `ops_weekly_report_template.md` | 运维巡检周报模板（新增） | @DevOps |
 
 ---
 
@@ -207,21 +215,33 @@ graph LR
 
 ### 2. 质量卡点检查
 每个阶段完成后，对照 `.claude/templates/quality_gate.md` 进行检查：
-- **QG-01**: 项目规划 → 产品需求（**用户评审**）
-- **QG-02**: 产品需求 → 架构设计/原型（**用户评审 PRD+ 线框图**）
-- **QG-02.5**: 交互原型 → 技术确认（**用户评审原型**）
-- **QG-03**: 架构设计 → 代码实现（**用户评审**）
-- **QG-04**: 代码实现 → 测试
-- **QG-05**: 测试 → 部署（**用户评审**）
+
+| 卡点 | 阶段转换 | 验收角色 | 说明 |
+|------|---------|---------|------|
+| QG-01 | 项目规划 → 产品需求 | @用户 | 项目计划评审 |
+| QG-02 | 产品需求 → 架构设计/原型 | @用户 | PRD+ 线框图评审 |
+| QG-02.5 | 交互原型 → 技术确认 | @用户 | 原型评审 |
+| QG-03 | 架构设计 → 代码实现 | @用户 | 架构设计评审 |
+| QG-04 | 代码实现 → 测试 | @测试工程师 | 代码质量检查 |
+| QG-05 | 测试 → 部署 | @用户 | 测试报告评审 |
 
 **说明**：
 - 架构师在 QG-02 通过后即可开始设计，无需等待 QG-02.5
 - 前端工程师在 QG-02.5 通过后才能开始实现
+- 后端工程师在 QG-03 通过后才能开始实现
+- 测试工程师在 QG-04 通过后才能开始测试
+- DevOps 在 QG-05 通过后才能开始部署
 
 ### 3. 文件命名规范
 ```
-[角色]_[项目]_[功能]_v[版本].md
-示例：prd_myapp_login_v1.0.md
+[角色前缀]_[项目简称]_[功能描述]_v[版本号].md
+
+示例：
+- prd_myapp_login_v1.0.md
+- arch_myapp_system_v1.0.md
+- config_myapp_v1.0.md
+- api_user_module_v1.0.md
+- test_report_login_20260301.md
 ```
 
 ### 4. 角色交接
@@ -230,12 +250,20 @@ graph LR
 ### 5. 模板使用
 优先使用模板，保持文档格式一致性。模板中包含填写说明和示例。
 
+### 6. 变更管理
+需求变更时，评估影响范围后决定处理流程：
+- **P0 重大变更**（影响产品定位）：重新通过完整质量卡点流程
+- **P1 中等变更**（影响部分功能）：重新通过受影响的质量卡点
+- **P2 轻微变更**（不影响已通过的卡点）：直接修改，更新文档版本
+
+详见 `.claude/templates/quality_gate.md#需求变更管理流程`
+
 ---
 
 ## 🛠️ 故障排除
 
 ### Q: 某个角色不工作？
-A: 检查 `.claude/agents/[角色名].md` 是否存在，确保 CLAUDE.md 中有对应配置
+A: 检查 `.claude/agents/[角色名].md` 是否存在，确保 `CLAUDE.md` 中有对应配置
 
 ### Q: 文档散落在各处？
 A: 提醒 Agent 遵循存储规范，所有文档必须在 `.claude/doc/` 下
@@ -256,6 +284,15 @@ A:
 2. 找到对应阶段的检查清单
 3. 逐项检查通过后，再开始下一阶段工作
 
+### Q: 需求变更如何处理？
+A:
+1. 评估变更影响范围（产品/架构/代码）
+2. 根据变更级别决定是否需要重新通过质量卡点
+3. 更新相关文档版本号和变更记录
+4. 通知受影响的下游角色
+
+详见 `.claude/templates/quality_gate.md#需求变更管理流程`
+
 ---
 
 ## 📄 License
@@ -267,3 +304,14 @@ MIT License - 可自由用于任何项目
 ## 🙏 贡献
 
 欢迎提交 Issue 和 PR 来改进这个框架！
+
+---
+
+## 📅 更新日志
+
+| 版本 | 日期 | 变更内容 |
+|------|------|---------|
+| v1.1 | 2026-03-01 | 新增变更管理流程、运维周报模板，修复模板编号问题 |
+| v1.0 | - | 初始版本，包含 10 个角色和 9 个模板 |
+
+```
