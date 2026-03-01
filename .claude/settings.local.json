@@ -22,7 +22,8 @@
       "Glob",
       "Grep",
       "Write",
-      "Edit"
+      "Edit",
+      "Bash(head:*)"
     ]
   }
 }

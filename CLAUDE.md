@@ -93,6 +93,11 @@
 3. **任务闭环**: 任务完成后，必须更新 `./.claude/doc/PROJECT_INDEX.md` 索引文件，记录最新的文件变动。
 4. **代码预览**: UI/UX 设计师在设计界面时，需生成单文件 `.html` 交互原型供预览。
 5. **文档模板**: 各角色应使用 `.claude/templates/` 目录下的标准模板，确保文档格式一致。
+6. **配置传递**（重要）:
+   - @架构师 完成架构设计后，必须创建 `config_[项目简称]_v1.0.md` 配置文档
+   - @后端工程师 必须读取配置文档获取数据库/中间件配置
+   - @DevOps 必须读取配置文档获取生产环境配置方案
+   - 配置文档包含：中间件清单、Docker Compose 配置、环境变量模板
 
 ## 3.5 文档模板清单
 
@@ -101,6 +106,7 @@
 | 市场调研模板 | `./.claude/templates/market_research_template.md` | @市场调研 |
 | PRD 模板 | `./.claude/templates/prd_template.md` | @产品经理 |
 | 架构模板 | `./.claude/templates/architecture_template.md` | @架构师 |
+| **配置规范模板** | `./.claude/templates/config_template.md` | @架构师 |
 | API 合同模板 | `./.claude/templates/api_contract_template.md` | @架构师/@后端 |
 | 测试报告模板 | `./.claude/templates/test_report_template.md` | @测试工程师 |
 | DevOps 模板 | `./.claude/templates/devops_template.md` | @DevOps |
@@ -114,12 +120,12 @@
 2. @市场调研 → 输出市场调研报告
 3. @产品经理 → 输出 PRD 文档
 4. @UI/UX 设计师 → 输出交互原型
-5. @架构师 → 输出技术架构设计
+5. @架构师 → 输出技术架构设计 + **环境配置规范**
 6. @AI 工程师 → 输出 AI 技术方案 (如需要)
-7. @后端工程师 → 实现 API 接口
+7. @后端工程师 → 实现 API 接口（读取架构师的配置文档）
 8. @前端工程师 → 实现前端页面
 9. @测试工程师 → 输出测试报告
-10. @DevOps → 部署上线
+10. @DevOps → 部署上线（读取架构师的配置文档）
 ```
 
 ---
