@@ -82,4 +82,4 @@
 
 ---
 
-** Path: `.claude/doc/01_Product_Design/market_research_[项目简称]_[日期].md` **
+**Path: `.claude/doc/01_Product_Design/market_research_[项目简称]_[日期].md`**

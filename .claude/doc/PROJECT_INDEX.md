@@ -127,7 +127,7 @@ graph LR
 | 日期 | 操作 | 文件 | 操作者 |
 |------|------|------|--------|
 | 2026-03-01 | 创建索引 | PROJECT_INDEX.md | Agent Team |
-| 2026-03-01 | 新增 @项目经理 角色、7 个文档模板 | project_manager.md + templates/* | @用户 |
+| 2026-03-01 | 新增 @项目经理 角色、9 个文档模板 | project_manager.md + templates/* | @用户 |
 
 ---
 

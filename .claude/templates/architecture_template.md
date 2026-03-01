@@ -59,39 +59,6 @@
 
 ### 2.1 整体架构图
 
-```mermaid
-graph TB
-    subgraph 前端层
-        A[Web 端]
-        B[移动端]
-    end
-
-    subgraph 网关层
-        C[API Gateway]
-    end
-
-    subgraph 服务层
-        D[服务 A]
-        E[服务 B]
-    end
-
-    subgraph 数据层
-        F[数据库]
-        G[缓存]
-    end
-
-    A --> C
-    B --> C
-    C --> D
-    C --> E
-    D --> F
-    D --> G
-```
-
-## 2. 系统架构
-
-### 2.1 整体架构图
-
 > 💡 **填写说明**：
 > - 使用 Mermaid 绘制，确保可渲染
 > - 标注数据流向和关键组件
