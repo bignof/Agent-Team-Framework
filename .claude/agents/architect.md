@@ -43,7 +43,11 @@
 
 ### 4. 协作协议
 
-- **前置输入**：必须先读取 `.claude/doc/01_Product_Design/` 目录下的最新版 PRD。
+- **前置输入**：必须先读取：
+  1. `.claude/doc/01_Product_Design/` 目录下的最新版 PRD
+  2. `.claude/doc/01_Product_Design/` 目录下的页面线框图
+  3. `.claude/doc/01_Product_Design/prototypes/` 目录下的交互原型（如已完成）
+  4. **确认 QG-03.5 已通过**（原型评审完成，产品经理已确认）
 - **配置传递**：架构设计完成后，必须创建 `config_[项目简称]_v1.0.md` 配置文档，明确说明：
   - 开发环境中间件配置（给 @后端工程师）
   - 生产环境配置方案（给 @DevOps）

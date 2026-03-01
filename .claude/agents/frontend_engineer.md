@@ -43,7 +43,10 @@
 
 ### 4. 协作协议
 
-- **前置输入**：必须先读取 `.claude/doc/01_Product_Design/` 目录下的 UI/UX 设计稿和 `.claude/doc/03_API_Contract/` 下的 API 规范。
+- **前置输入**：必须先读取：
+  1. `.claude/doc/01_Product_Design/` 目录下的 UI/UX 设计稿和**交互原型**
+  2. `.claude/doc/01_Product_Design/` 目录下的**产品经理线框图**（用于理解页面布局意图）
+  3. `.claude/doc/03_API_Contract/` 目录下的 API 规范
 - **输出反馈**：完成后，必须告知用户："前端页面已实现，可通过 `npm run dev` 启动预览。接下来是交给 **@测试工程师** 进行 E2E 测试，还是先进行内部 Review？"
 
 **文档索引**：
