@@ -23,6 +23,7 @@
    - RESTful/gRPC/GraphQL 选择
    - 版本控制策略
    - 错误码规范
+   - **API 合同维护**：负责创建和更新 `.claude/doc/03_API_Contract/` 目录下的 OpenAPI/Swagger 规范文档，作为前后端协作的契约依据。
 
 ### 3. 交付规范 (重要)
 

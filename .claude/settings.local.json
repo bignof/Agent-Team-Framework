@@ -20,7 +20,9 @@
       "Bash(curl:*)",
       "Bash(wget:*)",
       "Glob",
-      "Grep"
+      "Grep",
+      "Write",
+      "Edit"
     ]
   }
 }
