@@ -33,7 +33,7 @@
 │   ├── frontend_engineer.md
 │   ├── testing_engineer.md
 │   └── devops_engineer.md
-├── templates/            # 文档模板（9 个模板）
+├── templates/            # 文档模板（13 个模板）
 │   ├── market_research_template.md
 │   ├── prd_template.md
 │   ├── architecture_template.md
@@ -42,7 +42,11 @@
 │   ├── devops_template.md
 │   ├── project_plan_template.md
 │   ├── config_template.md
-│   └── quality_gate.md
+│   ├── quality_gate.md
+│   ├── mock_data_spec.md
+│   ├── integration_workflow.md
+│   ├── data_migration_sop.md
+│   └── ops_weekly_report_template.md
 └── doc/                  # 项目文档（由 Agent 生成）
     ├── PROJECT_INDEX.md    # 文档索引（由各角色 Agent 更新）
     ├── 00_Project_Management/   # 项目管理文档
@@ -53,6 +57,17 @@
     ├── 04_Test_Reports/         # 测试报告
     └── 05_DevOps/               # 运维部署文档
 ```
+
+---
+
+## 质量卡点状态
+
+| 卡点  | 阶段转换             | 状态      | 通过日期 | 检查者 |
+| ----- | -------------------- | --------- | -------- | ------ |
+| QG-01 | 产品需求 → 架构/原型 | ⏳ 待检查 | -        | -      |
+| QG-02 | 架构设计 → 代码实现  | ⏳ 待检查 | -        | -      |
+| QG-03 | 代码实现 → 测试      | ⏳ 待检查 | -        | -      |
+| QG-04 | 测试 → 部署          | ⏳ 待检查 | -        | -      |
 
 ---
 

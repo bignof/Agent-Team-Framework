@@ -219,20 +219,21 @@
 
 ## 3.5 文档模板清单
 
-| 模板名称          | 路径                                              | 适用角色            |
-| ----------------- | ------------------------------------------------- | ------------------- |
-| 市场调研模板      | `./.claude/templates/market_research_template.md` | @市场调研           |
-| PRD 模板          | `./.claude/templates/prd_template.md`             | @产品经理           |
-| 架构模板          | `./.claude/templates/architecture_template.md`    | @架构师             |
-| **配置规范模板**  | `./.claude/templates/config_template.md`          | @架构师             |
-| API 合同模板      | `./.claude/templates/api_contract_template.md`    | @架构师/@后端       |
-| 测试报告模板      | `./.claude/templates/test_report_template.md`     | @测试工程师         |
-| DevOps 模板       | `./.claude/templates/devops_template.md`          | @DevOps             |
-| 项目计划模板      | `./.claude/templates/project_plan_template.md`    | @项目经理           |
-| **质量卡点清单**  | `./.claude/templates/quality_gate.md`             | 所有角色            |
-| **Mock 数据规范** | `./.claude/templates/mock_data_spec.md`           | @后端/@前端         |
-| **联调流程**      | `./.claude/templates/integration_workflow.md`     | @架构师/@后端/@前端 |
-| **数据迁移 SOP**  | `./.claude/templates/data_migration_sop.md`       | @后端/@DevOps       |
+| 模板名称          | 路径                                                | 适用角色            |
+| ----------------- | --------------------------------------------------- | ------------------- |
+| 市场调研模板      | `./.claude/templates/market_research_template.md`   | @市场调研           |
+| PRD 模板          | `./.claude/templates/prd_template.md`               | @产品经理           |
+| 架构模板          | `./.claude/templates/architecture_template.md`      | @架构师             |
+| **配置规范模板**  | `./.claude/templates/config_template.md`            | @架构师             |
+| API 合同模板      | `./.claude/templates/api_contract_template.md`      | @架构师/@后端       |
+| 测试报告模板      | `./.claude/templates/test_report_template.md`       | @测试工程师         |
+| DevOps 模板       | `./.claude/templates/devops_template.md`            | @DevOps             |
+| 项目计划模板      | `./.claude/templates/project_plan_template.md`      | @项目经理           |
+| **质量卡点清单**  | `./.claude/templates/quality_gate.md`               | 所有角色            |
+| **Mock 数据规范** | `./.claude/templates/mock_data_spec.md`             | @后端/@前端         |
+| **联调流程**      | `./.claude/templates/integration_workflow.md`       | @架构师/@后端/@前端 |
+| **数据迁移 SOP**  | `./.claude/templates/data_migration_sop.md`         | @后端/@DevOps       |
+| **运维巡检周报**  | `./.claude/templates/ops_weekly_report_template.md` | @DevOps             |
 
 ## 4. 快速启动
 
@@ -255,6 +256,11 @@
    → @架构师 → 输出技术架构设计 + 环境配置规范
    → @UI/UX 设计师 → 输出交互原型（基于产品经理线框图）
    → @AI 工程师 → 输出 AI 技术方案（如项目需要 AI 能力）
+
+   **并行工作指导**：
+   - **建议优先召唤 @架构师**，因为技术选型可能影响原型设计（如小程序 vs Web 会影响交互范式）
+   - 如架构师选型结果影响原型设计，UI/UX 设计师应读取架构文档后再开始
+   - 如成果有冲突，由用户裁决，不允许 Agent 自行解决跨角色冲突
 
 5. @架构师完成后 → 触发 QG-02 检查（架构设计 → 代码实现，用户确认）
 

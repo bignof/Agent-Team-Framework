@@ -8,7 +8,7 @@
 
 - 🎭 **10 个专业角色** - 项目经理、产品经理、架构师、工程师等
 - 📋 **质量卡点机制** - 4 道关卡确保阶段交付质量（QG-01/QG-02/QG-03/QG-04）
-- 📝 **10 个文档模板** - 覆盖产品、技术、测试、运维全流程
+- 📝 **13 个文档模板** - 覆盖产品、技术、测试、运维全流程
 - 🤖 **自动初始化** - 首次对话自动检测并配置项目
 - 🔄 **变更管理流程** - 需求变更可追溯、影响可控
 
@@ -82,7 +82,7 @@ graph LR
 ## 📁 目录结构
 
 ```
-.ai/
+项目根目录/
 ├── .claude/
 │   ├── agents/                 # Agent 角色定义（10 个角色）
 │   │   ├── project_manager.md
@@ -95,7 +95,7 @@ graph LR
 │   │   ├── frontend_engineer.md
 │   │   ├── testing_engineer.md
 │   │   └── devops_engineer.md
-│   ├── templates/              # 文档模板（10 个模板）
+│   ├── templates/              # 文档模板（13 个模板）
 │   │   ├── market_research_template.md
 │   │   ├── prd_template.md
 │   │   ├── architecture_template.md
@@ -105,7 +105,10 @@ graph LR
 │   │   ├── project_plan_template.md
 │   │   ├── config_template.md
 │   │   ├── quality_gate.md            # 质量卡点检查清单
-│   │   └── ops_weekly_report_template.md  # 运维巡检周报模板（新增）
+│   │   ├── mock_data_spec.md          # Mock 数据规范
+│   │   ├── integration_workflow.md     # 前后端联调流程
+│   │   ├── data_migration_sop.md      # 数据迁移 SOP
+│   │   └── ops_weekly_report_template.md  # 运维巡检周报模板
 │   └── doc/                    # 项目文档（由 Agent 生成）
 │       ├── PROJECT_INDEX.md    # 文档索引（由各角色 Agent 更新）
 │       ├── 00_Project_Management/
@@ -125,18 +128,21 @@ graph LR
 
 所有模板都在 `.claude/templates/` 目录下，包含：
 
-| 模板                            | 用途                                   | 负责角色      |
-| ------------------------------- | -------------------------------------- | ------------- |
-| `market_research_template.md`   | 市场调研报告                           | @市场调研     |
-| `prd_template.md`               | 产品需求文档（带线框图指引）           | @产品经理     |
-| `architecture_template.md`      | 技术架构设计（带 trade-off 指引）      | @架构师       |
-| `api_contract_template.md`      | API 接口规范（OpenAPI/Swagger）        | @架构师/@后端 |
-| `test_report_template.md`       | 测试报告（功能/集成/E2E/性能）         | @测试工程师   |
-| `devops_template.md`            | 部署配置文档                           | @DevOps       |
-| `project_plan_template.md`      | 项目计划（无固定周期版本）             | @项目经理     |
-| `config_template.md`            | 环境配置规范（中间件/Docker/环境变量） | @架构师       |
-| `quality_gate.md`               | 质量卡点检查清单（4 道关卡）           | @项目经理     |
-| `ops_weekly_report_template.md` | 运维巡检周报模板（新增）               | @DevOps       |
+| 模板                            | 用途                                   | 负责角色            |
+| ------------------------------- | -------------------------------------- | ------------------- |
+| `market_research_template.md`   | 市场调研报告                           | @市场调研           |
+| `prd_template.md`               | 产品需求文档（带线框图指引）           | @产品经理           |
+| `architecture_template.md`      | 技术架构设计（带 trade-off 指引）      | @架构师             |
+| `api_contract_template.md`      | API 接口规范（OpenAPI/Swagger）        | @架构师/@后端       |
+| `test_report_template.md`       | 测试报告（功能/集成/E2E/性能）         | @测试工程师         |
+| `devops_template.md`            | 部署配置文档                           | @DevOps             |
+| `project_plan_template.md`      | 项目计划（无固定周期版本）             | @项目经理           |
+| `config_template.md`            | 环境配置规范（中间件/Docker/环境变量） | @架构师             |
+| `quality_gate.md`               | 质量卡点检查清单（4 道关卡）           | @项目经理           |
+| `mock_data_spec.md`             | Mock 数据规范                          | @后端/@前端         |
+| `integration_workflow.md`       | 前后端联调流程                         | @架构师/@后端/@前端 |
+| `data_migration_sop.md`         | 数据迁移 SOP                           | @后端/@DevOps       |
+| `ops_weekly_report_template.md` | 运维巡检周报模板                       | @DevOps             |
 
 ---
 
@@ -267,7 +273,7 @@ graph LR
 - **P1 中等变更**（影响部分功能）：重新通过受影响的质量卡点
 - **P2 轻微变更**（不影响已通过的卡点）：直接修改，更新文档版本
 
-详见 `.claude/templates/quality_gate.md#需求变更管理流程`
+详见 `.claude/templates/quality_gate.md#需求变更管理`
 
 ---
 
@@ -311,7 +317,7 @@ A:
 3. 更新相关文档版本号和变更记录
 4. 通知受影响的下游角色
 
-详见 `.claude/templates/quality_gate.md#需求变更管理流程`
+详见 `.claude/templates/quality_gate.md#需求变更管理`
 
 ---
 
@@ -329,10 +335,11 @@ MIT License - 可自由用于任何项目
 
 ## 📅 更新日志
 
-| 版本 | 日期       | 变更内容                                         |
-| ---- | ---------- | ------------------------------------------------ |
-| v1.1 | 2026-03-01 | 新增变更管理流程、运维周报模板，修复模板编号问题 |
-| v1.0 | -          | 初始版本，包含 10 个角色和 9 个模板              |
+| 版本 | 日期       | 变更内容                                                         |
+| ---- | ---------- | ---------------------------------------------------------------- |
+| v1.2 | 2026-03-02 | 修复目录结构、模板数量不一致、PRD 章节编号、QG-03 逻辑等多项问题 |
+| v1.1 | 2026-03-01 | 新增变更管理流程、运维周报模板，修复模板编号问题                 |
+| v1.0 | -          | 初始版本，包含 10 个角色和 13 个模板                             |
 
 ```
 

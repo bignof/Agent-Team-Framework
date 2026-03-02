@@ -4,28 +4,33 @@
 > 日期：YYYY-MM-DD
 > 作者：@架构师
 > 维护：@架构师 / @DevOps
+>
+> ℹ️ **多技术栈说明**：本模板以 Node.js 生态为示例。如项目使用 Java/Go/Python 等其他技术栈，请将环境变量文件、启动脚本和依赖配置替换为对应技术栈的等价方案（如 `.properties`、`application.yml`、`.toml` 等）。Docker Compose 和中间件配置与技术栈无关，可直接使用。
 
 ---
 
 ## 1. 中间件清单
 
 ### 1.1 开发环境配置
-| 中间件 | 版本 | 本地端口 | Docker 镜像 | 账号/密码 | 说明 |
-|-------|------|---------|------------|----------|------|
-| MySQL | 8.0+ | 3306 | mysql:8.0 | root/root123 | 主数据库 |
-| PostgreSQL | 15+ | 5432 | postgres:15 | postgres/pg123 | 可选 |
-| Redis | 7.0+ | 6379 | redis:7-alpine | - | 缓存/会话 |
-| MongoDB | 6.0+ | 27017 | mongo:6 | mongo/mongo123 | 文档存储 |
-| RabbitMQ | 3.12+ | 5672/15672 | rabbitmq:3.12-management | guest/guest | 消息队列 |
-| Kafka | 3.5+ | 9092/9093 | confluentinc/cp-kafka:7.4.0 | - | 事件流 |
-| Elasticsearch | 8.9+ | 9200/9300 | elasticsearch:8.9 | elastic/elastic123 | 搜索/日志 |
+
+| 中间件        | 版本  | 本地端口   | Docker 镜像                 | 账号/密码          | 说明      |
+| ------------- | ----- | ---------- | --------------------------- | ------------------ | --------- |
+| MySQL         | 8.0+  | 3306       | mysql:8.0                   | root/root123       | 主数据库  |
+| PostgreSQL    | 15+   | 5432       | postgres:15                 | postgres/pg123     | 可选      |
+| Redis         | 7.0+  | 6379       | redis:7-alpine              | -                  | 缓存/会话 |
+| MongoDB       | 6.0+  | 27017      | mongo:6                     | mongo/mongo123     | 文档存储  |
+| RabbitMQ      | 3.12+ | 5672/15672 | rabbitmq:3.12-management    | guest/guest        | 消息队列  |
+| Kafka         | 3.5+  | 9092/9093  | confluentinc/cp-kafka:7.4.0 | -                  | 事件流    |
+| Elasticsearch | 8.9+  | 9200/9300  | elasticsearch:8.9           | elastic/elastic123 | 搜索/日志 |
 
 ### 1.2 必装中间件（根据项目选择）
+
 - [ ] MySQL 8.0+
 - [ ] Redis 7.0+
 - [ ] RabbitMQ 3.12+
 
 ### 1.3 可选中间件
+
 - [ ] Elasticsearch（搜索需求时）
 - [ ] Kafka（高吞吐消息场景）
 - [ ] MongoDB（文档存储需求）
@@ -37,7 +42,8 @@
 ### 2.1 开发环境 docker-compose.yml
 
 ```yaml
-version: '3.8'
+# docker-compose.yml
+# 注：新版 Docker Compose 已不需要 version 字段
 
 services:
   # MySQL 数据库
@@ -45,7 +51,7 @@ services:
     image: mysql:8.0
     container_name: ${PROJECT_NAME}_mysql
     ports:
-      - "3306:3306"
+      - '3306:3306'
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root123}
       MYSQL_DATABASE: ${MYSQL_DATABASE:-dev_db}
@@ -57,7 +63,7 @@ services:
     networks:
       - dev_network
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -67,14 +73,14 @@ services:
     image: redis:7-alpine
     container_name: ${PROJECT_NAME}_redis
     ports:
-      - "6379:6379"
+      - '6379:6379'
     volumes:
       - redis_data:/data
     networks:
       - dev_network
     command: redis-server --appendonly yes
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
+      test: ['CMD', 'redis-cli', 'ping']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -84,8 +90,8 @@ services:
     image: rabbitmq:3.12-management
     container_name: ${PROJECT_NAME}_rabbitmq
     ports:
-      - "5672:5672"   # AMQP 端口
-      - "15672:15672" # Management UI
+      - '5672:5672' # AMQP 端口
+      - '15672:15672' # Management UI
     environment:
       RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-guest}
       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS:-guest}
@@ -94,7 +100,7 @@ services:
     networks:
       - dev_network
     healthcheck:
-      test: ["CMD", "rabbitmq-diagnostics", "check_running"]
+      test: ['CMD', 'rabbitmq-diagnostics', 'check_running']
       interval: 30s
       timeout: 10s
       retries: 5
@@ -339,34 +345,35 @@ CORS_CREDENTIALS=true
 
 ### 4.1 给后端工程师的配置信息
 
-| 配置项 | 用途 | 文件位置 |
-|-------|------|---------|
-| 数据库连接 | ORM/数据库客户端配置 | `.env.development` |
-| Redis 连接 | 缓存/会话存储 | `.env.development` |
-| RabbitMQ 连接 | 消息队列/事件驱动 | `.env.development` |
-| JWT 密钥 | 身份认证 | `.env.development` |
+| 配置项        | 用途                 | 文件位置           |
+| ------------- | -------------------- | ------------------ |
+| 数据库连接    | ORM/数据库客户端配置 | `.env.development` |
+| Redis 连接    | 缓存/会话存储        | `.env.development` |
+| RabbitMQ 连接 | 消息队列/事件驱动    | `.env.development` |
+| JWT 密钥      | 身份认证             | `.env.development` |
 
 **后端工程师需要实现：**
+
 1. 读取环境变量的配置加载器（config/loader.ts）
 2. 环境变量验证（使用 Zod 或 Joi）
 3. 默认值配置（config/default.ts）
 
 ### 4.2 给前端工程师的配置信息
 
-| 配置项 | 用途 | 说明 |
-|-------|------|------|
+| 配置项       | 用途     | 说明                        |
+| ------------ | -------- | --------------------------- |
 | API_BASE_URL | API 地址 | 开发：http://localhost:3000 |
-| API_PREFIX | API 前缀 | /api/v1 |
-| CORS_ORIGIN | 允许的源 | 开发：http://localhost:5173 |
+| API_PREFIX   | API 前缀 | /api/v1                     |
+| CORS_ORIGIN  | 允许的源 | 开发：http://localhost:5173 |
 
 ### 4.3 给 DevOps 的配置信息
 
-| 配置项 | 用途 | 传递方式 |
-|-------|------|---------|
-| 生产数据库配置 | 生产 RDS 连接 | AWS Secrets Manager |
-| 生产 Redis 配置 | ElastiCache/自建 | 环境变量注入 |
-| JWT_SECRET | 生产密钥 | 密钥管理服务 |
-| 日志配置 | 生产日志级别 | 环境变量 |
+| 配置项          | 用途             | 传递方式            |
+| --------------- | ---------------- | ------------------- |
+| 生产数据库配置  | 生产 RDS 连接    | AWS Secrets Manager |
+| 生产 Redis 配置 | ElastiCache/自建 | 环境变量注入        |
+| JWT_SECRET      | 生产密钥         | 密钥管理服务        |
+| 日志配置        | 生产日志级别     | 环境变量            |
 
 ---
 
@@ -448,8 +455,8 @@ docker-compose exec redis redis-cli
 
 ## 7. 配置变更记录
 
-| 版本 | 日期 | 变更内容 | 作者 |
-|-----|------|---------|------|
+| 版本 | 日期       | 变更内容 | 作者    |
+| ---- | ---------- | -------- | ------- |
 | v1.0 | YYYY-MM-DD | 初始版本 | @架构师 |
 
 ---
