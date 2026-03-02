@@ -112,6 +112,12 @@
 5. **QG-02 通过后才能开始实现**
 6. **Mock 数据是否已准备**（后端提供或自建）
 
+- **对上游文档有疑问时**：
+  - 对 API 规范有疑问 → 记录在 `.claude/doc/03_API_Contract/ISSUES.md`
+  - 对设计稿/原型有疑问 → 记录在 `.claude/doc/01_Product_Design/ISSUES.md`
+  - 对架构设计有疑问 → 记录在 `.claude/doc/02_Architecture/ISSUES.md`
+  - 详见 `CLAUDE.md > 3.2.5 跨角色问题跟踪规则`
+
 - **联调参与**：联调时切换到真实 API，记录接口问题并配合修复
 - **Mock 数据确认**：检查后端是否已提供 Mock 数据，如未提供可自建
 

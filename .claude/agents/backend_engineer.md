@@ -97,6 +97,12 @@
 4. `PROJECT_INDEX.md` 中 QG-02 状态是否为 🟢 已通过？
 5. **只有 QG-02 通过后才能开始实现**
 6. **Mock 数据是否已提供**（给前端工程师）
+7. 检查 `.claude/doc/03_API_Contract/ISSUES.md` 是否有待解答的问题，如有则优先处理
+
+- **对上游文档有疑问时**：
+  - 对 PRD 有疑问 → 记录在 `.claude/doc/01_Product_Design/ISSUES.md`
+  - 对架构设计有疑问 → 记录在 `.claude/doc/02_Architecture/ISSUES.md`
+  - 详见 `CLAUDE.md > 3.2.5 跨角色问题跟踪规则`
 
 - **API 变更通知**：API 变更时，更新 `.claude/doc/03_API_Contract/` 目录下的文档
 - **联调参与**：联调时负责修复 API 相关问题，确认 API 稳定性

@@ -48,11 +48,16 @@
 └── doc/                  # 项目文档（由 Agent 生成）
     ├── PROJECT_INDEX.md    # 文档索引（由各角色 Agent 更新）
     ├── 01_Product_Design/       # 产品定义和设计
-    │   └── prototypes/          # UI/UX 交互原型
+    │   ├── prototypes/          # UI/UX 交互原型
+    │   └── ISSUES.md            # 产品阶段问题跟踪（按需创建）
     ├── 02_Architecture/         # 技术架构设计
+    │   └── ISSUES.md            # 架构阶段问题跟踪（按需创建）
     ├── 03_API_Contract/         # 接口规范与契约
+    │   └── ISSUES.md            # 接口阶段问题跟踪（按需创建）
     ├── 04_Test_Reports/         # 测试报告
+    │   └── ISSUES.md            # 测试阶段问题跟踪（按需创建）
     └── 05_DevOps/               # 运维部署文档
+        └── ISSUES.md            # 运维阶段问题跟踪（按需创建）
 ```
 
 ---

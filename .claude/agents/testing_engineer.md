@@ -104,6 +104,13 @@
 4. **联调是否已完成**（检查联调报告文档是否存在）
 5. **执行 QG-03 准入检查**：对照 `quality_gate.md` 中 QG-03 清单逐项检查，全部通过后开始正式测试
 6. QG-03 检查通过后，更新 `PROJECT_INDEX.md` 中 QG-03 状态为 🟢
+7. 检查 `.claude/doc/04_Test_Reports/ISSUES.md` 是否有待解答的问题，如有则优先处理
+
+- **对上游文档有疑问时**：
+  - 对 PRD 验收标准有疑问 → 记录在 `.claude/doc/01_Product_Design/ISSUES.md`
+  - 对架构设计有疑问 → 记录在 `.claude/doc/02_Architecture/ISSUES.md`
+  - 对 API 规范有疑问 → 记录在 `.claude/doc/03_API_Contract/ISSUES.md`
+  - 详见 `CLAUDE.md > 3.2.5 跨角色问题跟踪规则`
 
 - **输出反馈**：完成后，告知用户测试结果概要（用例数、通过率、Bug 数量和严重程度），并建议：
   > "测试已完成，通过率 [X]%。请评审测试报告，如有需要调整的地方请随时告诉我。"

@@ -184,6 +184,11 @@
 4. `PROJECT_INDEX.md` 中 QG-01 状态是否为 🟢 已通过？
 5. **QG-01 通过后即可开始原型设计**
 
+- **对上游文档有疑问时**：
+  - 对 PRD 的页面流程或线框图有疑问 → 记录在 `.claude/doc/01_Product_Design/ISSUES.md`
+  - 对架构师技术选型影响设计的部分有疑问 → 记录在 `.claude/doc/02_Architecture/ISSUES.md`
+  - 详见 `CLAUDE.md > 3.2.5 跨角色问题跟踪规则`
+
 **输出反馈**：
 完成后，告知用户原型概要（页面数量、核心交互、设计风格），并建议：
 

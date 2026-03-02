@@ -196,6 +196,40 @@
 - **结构化输出**：总结确认时使用表格或清单格式
 - **需求模糊时主动追问**，给出具体选项帮助用户决策
 
+#### 3.2.5 跨角色问题跟踪规则
+
+当一个角色在阅读上游文档时发现疑问（如架构师对 PRD 有疑问、前端对 API 有疑问），必须通过 **ISSUES.md** 进行持久化记录，确保角色切换或新对话后问题不丢失。
+
+**核心规则**：
+
+1. **问题归属原则**：问题记录在**被质疑文档所在的目录**
+   - 架构师对 PRD 有疑问 → 记录在 `.claude/doc/01_Product_Design/ISSUES.md`
+   - 前端对 API 有疑问 → 记录在 `.claude/doc/03_API_Contract/ISSUES.md`
+   - 测试对架构有疑问 → 记录在 `.claude/doc/02_Architecture/ISSUES.md`
+
+2. **提问方行为**：
+   - 如果对应目录下没有 `ISSUES.md`，基于 `.claude/templates/issues_template.md` 创建
+   - 追加问题条目，标注优先级（P0-阻塞 / P1-重要 / P2-建议）
+   - P0 问题：**必须提醒用户切换到对应角色解答后才能继续**
+   - P1/P2 问题：记录后可先基于合理假设继续工作，标注假设内容
+
+3. **解答流程**：
+   - 用户通过 `@角色名` 切换到负责角色（如 `@产品经理`）
+   - 该角色必须先检查自己目录下的 `ISSUES.md`，优先处理 🔴 待解答 的问题
+   - 解答后更新状态为 `✅ 已解决`，如需修改原文档则同步更新
+
+4. **模板**：使用 `.claude/templates/issues_template.md` 中的标准格式
+
+**每个阶段目录的 ISSUES.md 位置**：
+
+| 目录                                      | 负责解答的角色                        |
+| ----------------------------------------- | ------------------------------------- |
+| `.claude/doc/01_Product_Design/ISSUES.md` | @产品经理 / @市场调研 / @UI/UX 设计师 |
+| `.claude/doc/02_Architecture/ISSUES.md`   | @架构师 / @AI 工程师                  |
+| `.claude/doc/03_API_Contract/ISSUES.md`   | @架构师 / @后端工程师                 |
+| `.claude/doc/04_Test_Reports/ISSUES.md`   | @测试工程师                           |
+| `.claude/doc/05_DevOps/ISSUES.md`         | @DevOps                               |
+
 ### 3.3 执行规范
 
 1. **读取上下文**: 在执行任何任务前，优先检查 `.claude/doc/` 下的最新相关文档。
@@ -235,6 +269,7 @@
 | **联调流程** | `./.claude/templates/integration_workflow.md` | @架构师/@后端/@前端 |
 | **数据迁移 SOP** | `./.claude/templates/data_migration_sop.md` | @后端/@DevOps |
 | **运维巡检周报** | `./.claude/templates/ops_weekly_report_template.md` | @DevOps |
+| **问题跟踪模板** | `./.claude/templates/issues_template.md` | 所有角色 |
 
 ## 4. 快速启动
 
