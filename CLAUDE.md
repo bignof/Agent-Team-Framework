@@ -100,10 +100,10 @@
 
 **内置指令**（无需角色文件）：
 
-| 指令 | 功能 | 说明 |
-|------|------|------|
+| 指令        | 功能             | 说明                                                                                         |
+| ----------- | ---------------- | -------------------------------------------------------------------------------------------- |
 | `@检查进度` | 查看质量卡点状态 | 读取 `PROJECT_INDEX.md` 和 `.claude/templates/quality_gate.md`，输出当前 QG 状态和下一步建议 |
-| `@快速模式` | 跳过前置沟通 | 直接基于已有文档开始工作 |
+| `@快速模式` | 跳过前置沟通     | 直接基于已有文档开始工作                                                                     |
 
 ### 产品阶段
 
@@ -128,13 +128,13 @@
 
 所有 Agent 生成的文档必须存储在 `.claude/doc/` 顶级目录下，严禁散落在根目录。
 
-| 类别      | 存放路径                               | 关联角色         |
-| :-------- | :------------------------------------- | :--------------- |
-| 产品定义  | `./.claude/doc/01_Product_Design/`     | 市场/产品/UI/UX  |
-| 技术架构  | `./.claude/doc/02_Architecture/`       | 架构师/AI 工程师 |
-| 接口/契约 | `./.claude/doc/03_API_Contract/`       | 架构师/后端      |
-| 测试报告  | `./.claude/doc/04_Test_Reports/`       | 测试工程师       |
-| 运维部署  | `./.claude/doc/05_DevOps/`             | DevOps           |
+| 类别      | 存放路径                           | 关联角色         |
+| :-------- | :--------------------------------- | :--------------- |
+| 产品定义  | `./.claude/doc/01_Product_Design/` | 市场/产品/UI/UX  |
+| 技术架构  | `./.claude/doc/02_Architecture/`   | 架构师/AI 工程师 |
+| 接口/契约 | `./.claude/doc/03_API_Contract/`   | 架构师/后端      |
+| 测试报告  | `./.claude/doc/04_Test_Reports/`   | 测试工程师       |
+| 运维部署  | `./.claude/doc/05_DevOps/`         | DevOps           |
 
 ## 3. 协作协议 (SOP)
 
@@ -187,7 +187,7 @@
 
 - 任务完成后，必须更新 `PROJECT_INDEX.md`
 - 文件必须存放在 `.claude/doc/` 对应子目录下
-- 完成后告知用户交付物概要，并**建议下一步应召唤哪个角色**（不说"通知/邀请某角色"）
+- 完成后告知用户交付物概要，并**询问用户是否需要调整或修改**（不主动建议下一步召唤哪个角色，由用户自行决定）
 
 #### 3.2.4 沟通风格规则
 
@@ -220,21 +220,21 @@
 
 ## 3.5 文档模板清单
 
-| 模板名称          | 路径                                                | 适用角色            |
-| ----------------- | --------------------------------------------------- | ------------------- |
-| 市场调研模板      | `./.claude/templates/market_research_template.md`   | @市场调研           |
-| PRD 模板          | `./.claude/templates/prd_template.md`               | @产品经理           |
-| 架构模板          | `./.claude/templates/architecture_template.md`      | @架构师             |
-| **配置规范模板**  | `./.claude/templates/config_template.md`            | @架构师             |
-| API 合同模板      | `./.claude/templates/api_contract_template.md`      | @架构师/@后端       |
-| 测试报告模板      | `./.claude/templates/test_report_template.md`       | @测试工程师         |
-| DevOps 模板       | `./.claude/templates/devops_template.md`            | @DevOps             |
+| 模板名称         | 路径                                              | 适用角色      |
+| ---------------- | ------------------------------------------------- | ------------- |
+| 市场调研模板     | `./.claude/templates/market_research_template.md` | @市场调研     |
+| PRD 模板         | `./.claude/templates/prd_template.md`             | @产品经理     |
+| 架构模板         | `./.claude/templates/architecture_template.md`    | @架构师       |
+| **配置规范模板** | `./.claude/templates/config_template.md`          | @架构师       |
+| API 合同模板     | `./.claude/templates/api_contract_template.md`    | @架构师/@后端 |
+| 测试报告模板     | `./.claude/templates/test_report_template.md`     | @测试工程师   |
+| DevOps 模板      | `./.claude/templates/devops_template.md`          | @DevOps       |
 
-| **质量卡点清单**  | `./.claude/templates/quality_gate.md`               | 所有角色            |
-| **Mock 数据规范** | `./.claude/templates/mock_data_spec.md`             | @后端/@前端         |
-| **联调流程**      | `./.claude/templates/integration_workflow.md`       | @架构师/@后端/@前端 |
-| **数据迁移 SOP**  | `./.claude/templates/data_migration_sop.md`         | @后端/@DevOps       |
-| **运维巡检周报**  | `./.claude/templates/ops_weekly_report_template.md` | @DevOps             |
+| **质量卡点清单** | `./.claude/templates/quality_gate.md` | 所有角色 |
+| **Mock 数据规范** | `./.claude/templates/mock_data_spec.md` | @后端/@前端 |
+| **联调流程** | `./.claude/templates/integration_workflow.md` | @架构师/@后端/@前端 |
+| **数据迁移 SOP** | `./.claude/templates/data_migration_sop.md` | @后端/@DevOps |
+| **运维巡检周报** | `./.claude/templates/ops_weekly_report_template.md` | @DevOps |
 
 ## 4. 快速启动
 
@@ -258,7 +258,7 @@
    → @AI 工程师 → 输出 AI 技术方案（如项目需要 AI 能力）
 
    **并行工作指导**：
-   - **建议优先召唤 @架构师**，因为技术选型可能影响原型设计（如小程序 vs Web 会影响交互范式）
+   - **建议优先进行架构设计**，因为技术选型可能影响原型设计（如小程序 vs Web 会影响交互范式）
    - 如架构师选型结果影响原型设计，UI/UX 设计师应读取架构文档后再开始
    - 如成果有冲突，由用户裁决，不允许 Agent 自行解决跨角色冲突
 
