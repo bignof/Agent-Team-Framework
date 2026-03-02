@@ -4,18 +4,19 @@
 
 ## 文档类型
 
-| 文档类型 | 命名规范 | 说明 |
-|---------|---------|------|
-| CI/CD 配置 | `cicd_[项目简称]_[日期].md` | GitHub Actions / Jenkins 流水线配置 |
-| 容器化部署 | `docker_[项目简称]_[日期].md` | Dockerfile、Kubernetes/Helm 配置 |
-| 基础设施 | `infra_[项目简称]_[日期].md` | Terraform / CloudFormation 脚本 |
-| 监控配置 | `monitoring_[项目简称]_[日期].md` | Prometheus、Grafana、告警规则 |
-| 环境配置 | `env.production.[项目简称].md` | 生产环境配置方案 |
-| 运维周报 | `ops_weekly_YYYYMMDD.md` | 每周巡检报告（上线后） |
+| 文档类型   | 命名规范                          | 说明                                |
+| ---------- | --------------------------------- | ----------------------------------- |
+| CI/CD 配置 | `cicd_[项目简称]_[日期].md`       | GitHub Actions / Jenkins 流水线配置 |
+| 容器化部署 | `docker_[项目简称]_[日期].md`     | Dockerfile、Kubernetes/Helm 配置    |
+| 基础设施   | `infra_[项目简称]_[日期].md`      | Terraform / CloudFormation 脚本     |
+| 监控配置   | `monitoring_[项目简称]_[日期].md` | Prometheus、Grafana、告警规则       |
+| 环境配置   | `env.production.[项目简称].md`    | 生产环境配置方案                    |
+| 运维周报   | `ops_weekly_YYYYMMDD.md`          | 每周巡检报告（上线后）              |
 
 ## 配置传递（重要）
 
 @DevOps 必须读取架构师创建的 `config_[项目简称]_v1.0.md` 获取：
+
 - 生产数据库配置
 - 生产 Redis/消息队列配置
 - JWT_SECRET 等密钥管理方案
@@ -23,7 +24,7 @@
 ## 部署流程
 
 ```
-1. 测试报告通过 QG-05 检查
+1. 测试报告通过 QG-04 检查
 2. @DevOps 读取架构配置文档
 3. 编写 CI/CD 流水线配置
 4. 配置生产环境变量（通过密钥管理服务）
@@ -32,13 +33,13 @@
 
 ## 质量卡点
 
-- **QG-05**: 测试 → 部署（5 项检查，含"部署文档已就绪"）
+- **QG-04**: 测试 → 部署（5 项检查，含“部署文档已就绪”）
 
 ## 使用说明
 
 1. @DevOps 完成部署配置后必须生成文档
 2. 生产环境配置必须通过密钥管理服务注入
-3. 上线后负责监控巡检，每周输出运维周报
+3. 用户需要巡检时，执行巡检并输出运维报告
 4. 所有文档创建后必须更新 `../PROJECT_INDEX.md`
 
 ---
