@@ -3,7 +3,7 @@
 > **注意**: 首次使用时，Claude Code 会自动检测并更新此文件中的项目信息。
 
 > 最后更新：YYYY-MM-DD
-> 维护者：@项目经理
+> 维护者：Agent Team
 
 ---
 
@@ -23,7 +23,6 @@
 ```
 .claude/
 ├── agents/               # Agent 角色定义
-│   ├── project_manager.md
 │   ├── market_researcher.md
 │   ├── product_manager.md
 │   ├── ui_ux_designer.md
@@ -33,14 +32,13 @@
 │   ├── frontend_engineer.md
 │   ├── testing_engineer.md
 │   └── devops_engineer.md
-├── templates/            # 文档模板（13 个模板）
+├── templates/            # 文档模板
 │   ├── market_research_template.md
 │   ├── prd_template.md
 │   ├── architecture_template.md
 │   ├── api_contract_template.md
 │   ├── test_report_template.md
 │   ├── devops_template.md
-│   ├── project_plan_template.md
 │   ├── config_template.md
 │   ├── quality_gate.md
 │   ├── mock_data_spec.md
@@ -49,7 +47,6 @@
 │   └── ops_weekly_report_template.md
 └── doc/                  # 项目文档（由 Agent 生成）
     ├── PROJECT_INDEX.md    # 文档索引（由各角色 Agent 更新）
-    ├── 00_Project_Management/   # 项目管理文档
     ├── 01_Product_Design/       # 产品定义和设计
     │   └── prototypes/          # UI/UX 交互原型
     ├── 02_Architecture/         # 技术架构设计
@@ -72,12 +69,6 @@
 ---
 
 ## 文档清单
-
-### 00_Project_Management - 项目管理
-
-| 文件名   | 描述                         | 作者      | 版本 | 日期 |
-| -------- | ---------------------------- | --------- | ---- | ---- |
-| _待添加_ | 项目计划、进度报告、风险日志 | @项目经理 |      |      |
 
 ### 01_Product_Design - 产品定义
 
@@ -124,9 +115,7 @@
 
 ```mermaid
 graph LR
-    P[项目规划] --> B[市场调研<br/>*可选*]
-    P -.->|跳过调研| C
-    B --> C[PRD + 线框图]
+    B[市场调研<br/>*可选*] --> C[PRD + 线框图]
     C --> QG1[QG-01 用户确认]
     QG1 --> E[交互原型]
     QG1 --> F[架构设计]
@@ -149,7 +138,7 @@ graph LR
 | 日期       | 操作                              | 文件                              | 操作者     |
 | ---------- | --------------------------------- | --------------------------------- | ---------- |
 | 2026-03-01 | 创建索引                          | PROJECT_INDEX.md                  | Agent Team |
-| 2026-03-01 | 新增 @项目经理 角色、9 个文档模板 | project_manager.md + templates/\* | @用户      |
+| 2026-03-01 | 新增 9 个文档模板                  | templates/\*                      | @用户      |
 
 ---
 
